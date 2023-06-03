@@ -18,7 +18,7 @@ defmodule JswatchWeb.StopwatchManager do
     {:noreply, %{state | mode: mode}}
   end
 
-  def handle_info(:"bottom-left-pressed", %{ui_pid: ui, st1: Working} = state) do
+  def handle_info(:"bottom-left-pressed", %{ui_pid: ui, st1: Working, mode: SWatch} = state) do
     GenServer.cast(ui, {:set_time_display, ~T[00:00:00.00] |> Time.truncate(:millisecond) |> Time.to_string |> String.slice(3..-1)})
     {:noreply, %{state | count: ~T[00:00:00.00]}}
   end

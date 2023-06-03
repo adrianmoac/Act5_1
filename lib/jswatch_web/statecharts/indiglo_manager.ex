@@ -11,7 +11,6 @@ defmodule JswatchWeb.IndigloManager do
     {:noreply, state |> Map.put(:st, IndigloOn)}
   end
 
-  # IndigloOn -- top-right(released) --> Wai
   def handle_info(:"top-right-released", %{st: IndigloOn, ui_pid: ui} = state) do
     GenServer.cast(ui, :unset_indiglo)
     {:noreply, state |> Map.put(:st, IndigloOff)}
